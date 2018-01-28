@@ -7,9 +7,10 @@ class Router extends React.Component {
   render(){
     return(
       <BrowserRouter>
-        <Route exact path="/" component={BasketContainer} />
+        <React.Fragment>
+        <Route exact path="/basket" component={BasketContainer} />
         <Route path="/checkout" component={CheckoutContainer} />
-
+      </React.Fragment>
       </BrowserRouter>
     )
   }
