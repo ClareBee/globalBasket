@@ -18,7 +18,7 @@ class CheckoutContainer extends React.Component{
     let apiRates = this.props.data.currencyquotes.quotes;
     if(apiRates){
       Object.keys(apiRates).map(rate => {
-        if(rate == apiCode){
+        if(rate === apiCode){
         console.log("found it")
         this.setState({
           chosenCurrencyCode: apiCode,
@@ -28,7 +28,7 @@ class CheckoutContainer extends React.Component{
     });
     let countries = this.props.data.countries;
     Object.keys(countries).map(country => {
-      if(code == country){
+      if(code === country){
         this.setState({
           chosenCurrency: countries[country]
         })
