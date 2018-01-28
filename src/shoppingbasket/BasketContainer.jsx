@@ -11,6 +11,7 @@ class BasketContainer extends React.Component{
     return(
       <React.Fragment>
         <h1>basket</h1>
+        <i className="material-icons">shopping_basket</i>
         <LatestTimeDisplay {...this.props} />
         <ProductList />
         <CheckoutButton />
