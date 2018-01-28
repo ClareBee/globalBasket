@@ -1,4 +1,5 @@
 import React from 'react';
+import LatestTimeDisplay from './LatestTimeDisplay';
 
 class BasketContainer extends React.Component{
   constructor(props){
@@ -6,7 +7,10 @@ class BasketContainer extends React.Component{
   }
   render(){
     return(
-      <h1>basket</h1>
+      <React.Fragment>
+        <h1>basket</h1>
+        <LatestTimeDisplay {...this.props} />
+      </React.Fragment>
     )
   }
 }
