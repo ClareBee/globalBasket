@@ -10,7 +10,7 @@ class CheckoutContainer extends React.Component{
     return(
       <React.Fragment>
         <h1>checkout</h1>
-        <CurrencySelector data={this.props}/>
+        <CurrencySelector data={this.props.data}/>
       </React.Fragment>
     )
   }

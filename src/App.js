@@ -30,6 +30,7 @@ class App extends Component {
     .catch(error => {
       console.log(error.message);
     });
+    this.countriesApiRequest();
   }
   countriesApiRequest(){
     const url = "http://apilayer.net/api/list?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
@@ -47,11 +48,12 @@ class App extends Component {
     .catch(error => {
       console.log(error.message);
     });
+
+
   }
 
   componentDidMount(){
     this.apiRequest();
-    this.countriesApiRequest();
   }
   render() {
     console.log(this.state.currencyquotes.quotes);
