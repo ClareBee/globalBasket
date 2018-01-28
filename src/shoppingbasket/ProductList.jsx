@@ -1,9 +1,8 @@
 import React from 'react';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Card from 'material-ui/Card';
-import Subheader from 'material-ui/List/ListSubheader';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
+import Button from 'material-ui/Button';
 
 class ProductList extends React.Component{
   constructor(props){
@@ -19,21 +18,28 @@ class ProductList extends React.Component{
             <GridListTile>
             <img src="https://image.freepik.com/free-icon/question-mark_318-52837.jpg" />
             <GridListTileBar
-              productName="something"
+              title={<span>Product</span>}
               subtitle={<span>cost</span>}
               actionIcon={
+                <React.Fragment>
+                <IconButton>
+                  <Icon color="danger" style={{ fontSize: 36 }}>
+                      delete
+                  </Icon>
+                </IconButton>
                 <IconButton>
                   <Icon color="primary" style={{ fontSize: 36 }}>
                       add_circle
                   </Icon>
                 </IconButton>
+              </React.Fragment>
               }
             />
           </GridListTile>
           <GridListTile>
           <img src="https://image.freepik.com/free-icon/question-mark_318-52837.jpg" />
           <GridListTileBar
-            productName="something"
+            title={<span>Product Name</span>}
             subtitle={<span>cost</span>}
             actionIcon={
               <IconButton>

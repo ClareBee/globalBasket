@@ -45,7 +45,7 @@ class CheckoutContainer extends React.Component{
     let conversion = this.state.chosenCurrencyCode.substr(3);
     return(
       <React.Fragment>
-        <Link to="/basket">Back</Link>
+        <Link to="/basket"><i className="material-icons">arrow_back</i></Link>
         <h1>checkout</h1>
         <h2>You chose {this.state.chosenCurrency}</h2>
         <h2>{conversion}</h2>

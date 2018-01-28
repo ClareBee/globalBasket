@@ -60,9 +60,6 @@ class App extends Component {
     console.log(this.state.countries);
     return (
       <div className="App">
-        <Button raised color="primary">
-          checkout
-        </Button>
         <Router data={this.state}/>
       </div>
     );

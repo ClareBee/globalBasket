@@ -5,7 +5,7 @@ import Button from 'material-ui/Button';
 class CheckoutButton extends React.Component{
   render(){
     return(
-      <Link to="/checkout"><Button>Checkout</Button></Link>
+      <Link to="/checkout"><Button raised color="primary">Checkout</Button></Link>
     )
   }
 
