@@ -34,13 +34,13 @@ class App extends Component {
     this.apiRequest();
   }
   render() {
-    console.log(this.state.currencyquotes);
+    console.log(this.state.currencyquotes.quotes);
     return (
       <div className="App">
         <Button raised color="primary">
           checkout
         </Button>
-        <Router />
+        <Router data={this.state.currencyquotes.quotes}/>
       </div>
     );
   }
