@@ -5,12 +5,12 @@ import CheckoutContainer from './checkout/CheckoutContainer';
 
 class Router extends React.Component {
   render(){
-    console.log(this.props.data);
+    console.log(this.props);
     return(
       <BrowserRouter>
         <React.Fragment>
-        <Route exact path="/basket" render={props => <BasketContainer {...props} data={this.props.data}/>} />
-        <Route path="/checkout" render={props => <CheckoutContainer {...props} data={this.props.data} />} />
+        <Route exact path="/basket" render={props => <BasketContainer {...props} data={this.props.data} products={this.props.products}/>} />
+        <Route path="/checkout" render={props => <CheckoutContainer {...props} data={this.props.data} products={this.props.products}/>} />
       </React.Fragment>
       </BrowserRouter>
     )
