@@ -6,11 +6,11 @@ class CheckoutContainer extends React.Component{
     super(props);
   }
   render(){
-    console.log(this.props.quotes)
+    console.log(this.props.data)
     return(
       <React.Fragment>
         <h1>checkout</h1>
-        <CurrencySelector data={this.props.quotes}/>
+        <CurrencySelector data={this.props}/>
       </React.Fragment>
     )
   }
