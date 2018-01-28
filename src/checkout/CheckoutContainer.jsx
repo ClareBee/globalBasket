@@ -6,6 +6,7 @@ class CheckoutContainer extends React.Component{
     super(props);
     this.state = {
       chosenCurrency: "",
+      chosenCurrencyCode: "",
       chosenCurrencyRate: 0
     }
     this.handleChosenCurrency = this.handleChosenCurrency.bind(this);
@@ -17,13 +18,22 @@ class CheckoutContainer extends React.Component{
     if(apiRates){
       Object.keys(apiRates).map(rate => {
         if(rate == apiCode){
-        console.log(apiRates[rate])
         console.log("found it")
         this.setState({
+          chosenCurrencyCode: apiCode,
           chosenCurrencyRate: apiRates[rate]
         });
       }
     });
+    let countries = this.props.data.countries;
+    Object.keys(countries).map(country => {
+      if(code == country){
+        this.setState({
+          chosenCurrency: countries[country]
+        })
+        console.log(countries[country])
+      }
+    })
   }
 }
 
@@ -31,9 +41,13 @@ class CheckoutContainer extends React.Component{
 
   render(){
     console.log(this.props.data);
+    let conversion = this.state.chosenCurrencyCode.substr(3);
     return(
       <React.Fragment>
         <h1>checkout</h1>
+        <h2>You chose {this.state.chosenCurrency}</h2>
+        <h2>{conversion}</h2>
+        <h3>{this.state.chosenCurrencyRate}</h3>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
       </React.Fragment>
     )
