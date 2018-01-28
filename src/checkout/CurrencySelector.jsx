@@ -7,13 +7,7 @@ class CurrencySelector extends React.Component {
   }
 
 
-  componentDidMount(){
-    let countryOptions = this.props.data.countries;
-    console.log(countryOptions);
-    let options = countryOptions.map(country => {
-        return <option>{country}</option>
-    });
-  }
+
 
   handleSelection(event){
     this.props.onSelect(event.target.value);
