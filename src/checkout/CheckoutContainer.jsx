@@ -13,24 +13,22 @@ class CheckoutContainer extends React.Component{
 
   handleChosenCurrency(code){
     let apiCode = `USD${code}`;
-    console.log(apiCode);
-    this.setState({chosenCurrency: apiCode});
-    //temporary test to link up this with other data
-    console.log(this.props.data);
-  }
-
-  componentDidUpdate(){
     let apiRates = this.props.data.currencyquotes.quotes;
-    let chosenRate = this.state.chosenCurrency;
-    if(apiRates && chosenRate){
-    Object.keys(apiRates).map(rate => {
-      if(rate == chosenRate){
-      console.log(apiRates[rate])
-      console.log("found it")
+    if(apiRates){
+      Object.keys(apiRates).map(rate => {
+        if(rate == apiCode){
+        console.log(apiRates[rate])
+        console.log("found it")
+        this.setState({
+          chosenCurrencyRate: apiRates[rate]
+        });
       }
-    })
+    });
   }
-  }
+}
+
+
+
   render(){
     console.log(this.props.data);
     return(
