@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Button from 'material-ui/Button';
 import Router from './Router';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
+import {ProductData} from './ProductData';
 
 
 class App extends Component {
@@ -48,8 +51,6 @@ class App extends Component {
     .catch(error => {
       console.log(error.message);
     });
-
-
   }
 
   componentDidMount(){
@@ -58,8 +59,12 @@ class App extends Component {
   render() {
     console.log(this.state.currencyquotes.quotes);
     console.log(this.state.countries);
+    console.log(ProductData);
     return (
       <div className="App">
+        <Grid item s={12}>
+          <Paper>xs=12</Paper>
+        </Grid>
         <Router data={this.state}/>
       </div>
     );

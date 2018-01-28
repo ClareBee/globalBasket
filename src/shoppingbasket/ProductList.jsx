@@ -23,7 +23,7 @@ class ProductList extends React.Component{
               actionIcon={
                 <React.Fragment>
                 <IconButton>
-                  <Icon color="danger" style={{ fontSize: 36 }}>
+                  <Icon  style={{ fontSize: 36 }}>
                       delete
                   </Icon>
                 </IconButton>
