@@ -19,6 +19,7 @@ class Basket extends React.Component{
     super(props);
   }
   render(){
+    console.log(this.props)
     return(
       <Paper>
         <Typography type="headline" component="h3">

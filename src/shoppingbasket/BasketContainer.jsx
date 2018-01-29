@@ -4,6 +4,8 @@ import LatestTimeDisplay from './LatestTimeDisplay';
 import CheckoutButton from './CheckoutButton';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
+import Grid from 'material-ui/Grid';
+import Basket from './Basket';
 
 class BasketContainer extends React.Component{
   constructor(props){
@@ -30,7 +32,6 @@ class BasketContainer extends React.Component{
     this.setState({
       basketContents: arr
     })
-    console.log(this.state.basketContents)
   }
 
   render(){
@@ -47,7 +48,15 @@ class BasketContainer extends React.Component{
             label="GBP"
           />
         </FormGroup>
+        <React.Fragment>
+          <h1>Product list</h1>
+          <Grid container spacing={24}>
         <ProductList {...this.props} handleProducts={this.handleProducts}/>
+        <Grid item xs={4}>
+          <Basket chosenProducts={this.state.basketContents}/>
+        </Grid>
+      </Grid>
+    </React.Fragment>
         <CheckoutButton />
       </React.Fragment>
     )

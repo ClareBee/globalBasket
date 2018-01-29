@@ -57,9 +57,7 @@ class ProductList extends React.Component{
     });
 
     return(
-      <React.Fragment>
-        <h1>Product list</h1>
-        <Grid container spacing={24}>
+  
           <Grid item xs={8}>
             <GridList cols={2} cellHeight={250}>
 
@@ -67,11 +65,7 @@ class ProductList extends React.Component{
 
             </GridList>
           </Grid>
-          <Grid item xs={4}>
-            <Basket />
-          </Grid>
-        </Grid>
-      </React.Fragment>
+
     )
   }
 }
