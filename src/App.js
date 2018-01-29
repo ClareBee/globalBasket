@@ -65,10 +65,18 @@ class App extends Component {
     this.apiRequest();
   }
   render() {
-    console.log(this.state.currencyquotes.quotes);
+    let rates = this.state.currencyquotes.quotes;
     console.log(this.state.countries);
     console.log(ProductData);
     console.log(this.state.baseCurrency);
+    let baseRate = 0;
+    if(rates && this.state.baseCurrency){
+    baseRate = Object.keys(rates).map(rate => {
+      if(this.state.baseCurrency == rate){
+        console.log(rates[rate])
+      }
+    })
+  }
     return (
       <div className="App">
         <Grid item xs={12}>

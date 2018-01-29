@@ -20,7 +20,7 @@ class BasketContainer extends React.Component{
     this.setState({
       currencySwitch: true
     })
-    this.props.changeCurrency("USGBP");
+    this.props.changeCurrency("USDGBP");
   }
 
   render(){
