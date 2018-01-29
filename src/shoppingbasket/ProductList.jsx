@@ -15,13 +15,15 @@ class ProductList extends React.Component{
   render(){
     let products = this.props.products;
     console.log(this.props);
+
     let display = products.map((product, index) => {
 
       return <GridListTile>
         <img src={product.image} />
         <GridListTileBar
           title={<span>{product.name}</span>}
-          subtitle={<span>{this.props.data.baseCurrency === "USDGBP" ? "£" : "$"}{product.price.toFixed(2)}</span>}
+          subtitle={<span>{this.props.data.baseCurrency === "USDGBP" ? "£" : "$" }
+                  {this.props.data.baseCurrency === "USDGBP" ? (product.price * this.props.data.baseCurrencyRate).toFixed(2) : product.price.toFixed(2)}</span>}
           actionIcon={
             <IconButton>
               <Icon color="primary" style={{ fontSize: 36 }}>
