@@ -9,8 +9,8 @@ class Router extends React.Component {
     return(
       <BrowserRouter>
         <React.Fragment>
-        <Route exact path="/basket" render={props => <BasketContainer {...props} data={this.props.data} products={this.props.products} changeCurrency={this.props.changeCurrency}/>} />
-        <Route path="/checkout" render={props => <CheckoutContainer {...props} data={this.props.data} products={this.props.products}/>} />
+        <Route exact path="/basket" render={props => <BasketContainer {...props} data={this.props.data} products={this.props.products} changeCurrency={this.props.changeCurrency} handleBasketItems={this.props.finaliseList}/>} />
+        <Route path="/checkout" render={props => <CheckoutContainer {...props} data={this.props.data} products={this.props.products} />} />
       </React.Fragment>
       </BrowserRouter>
     )

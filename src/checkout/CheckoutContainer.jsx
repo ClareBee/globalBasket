@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CurrencySelector from './CurrencySelector';
-import Basket from '../shoppingbasket/Basket';
+import SelectedItems from './SelectedItems';
 
 class CheckoutContainer extends React.Component{
   constructor(props){
@@ -52,7 +52,7 @@ class CheckoutContainer extends React.Component{
         <h2>{conversion}</h2>
         <h3>{this.state.chosenCurrencyRate}</h3>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
-        <Basket />
+        <SelectedItems {...this.props} />
       </React.Fragment>
     )
   }

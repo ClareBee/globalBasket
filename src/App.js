@@ -16,11 +16,13 @@ class App extends Component {
       currencyquotes: [],
       countries: [],
       baseCurrency: "",
-      baseCurrencyRate: null
+      baseCurrencyRate: null,
+      finalItems: []
     }
     this.apiRequest = this.apiRequest.bind(this);
     this.countriesApiRequest = this.countriesApiRequest.bind(this);
     this.changeCurrency = this.changeCurrency.bind(this);
+    this.handleBasketItems = this.handleBasketItems.bind(this);
   }
   apiRequest(){
     const url = "http://apilayer.net/api/live?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
@@ -78,6 +80,14 @@ class App extends Component {
   componentDidMount(){
     this.apiRequest();
   }
+  handleBasketItems(arr){
+    var finalChoice = this.state.finalItems;
+    var finalData = finalChoice.concat(arr)
+    this.setState({
+      finalItems: finalData
+    })
+    console.log(this.state.finalItems)
+  }
 
   render() {
     let rates = this.state.currencyquotes.quotes;
@@ -98,7 +108,7 @@ class App extends Component {
             <LatestTimeDisplay time={time}/>
           </Paper>
         </Grid>
-        <Router data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
+        <Router finaliseList={this.handleBasketItems} data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
       </div>
     );
   }

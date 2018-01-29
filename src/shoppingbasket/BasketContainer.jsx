@@ -6,6 +6,7 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 import Grid from 'material-ui/Grid';
 import Basket from './Basket';
+import { Link}  from 'react-router-dom';
 
 
 class BasketContainer extends React.Component{
@@ -19,6 +20,7 @@ class BasketContainer extends React.Component{
     this.handleChange = this.handleChange.bind(this);
     this.handleProducts = this.handleProducts.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.updateList = this.updateList.bind(this);
   }
   handleChange(event, checked){
     this.setState({
@@ -45,7 +47,13 @@ class BasketContainer extends React.Component{
     })
     console.log(this.state.basketContents)
   }
-
+  updateList(){
+    console.log('button clicked')
+    console.log(this.props)
+    var chosen = this.state.basketContents
+    console.log(chosen)
+    this.props.handleBasketItems(chosen)
+  }
   render(){
     return(
       <React.Fragment>
@@ -69,7 +77,7 @@ class BasketContainer extends React.Component{
         </Grid>
       </Grid>
     </React.Fragment>
-        <CheckoutButton />
+          <Link to="/checkout"><button onClick={this.updateList}>Checkout</button></Link>
       </React.Fragment>
     )
   }
