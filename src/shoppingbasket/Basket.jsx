@@ -20,30 +20,38 @@ class Basket extends React.Component{
   }
   render(){
     console.log(this.props)
+    let totalProducts = this.props.allProducts;
+    let productsChosen = this.props.chosenProducts;
+    let listDisplay = totalProducts.map((product, index) => {
+      if(productsChosen.includes(index)){
+        return <ListItem button>
+          <ListItemAvatar>
+            <Avatar>
+              <img alt="avatar" src={product.image} />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText
+            primary={product.name}
+            secondary={product.price}
+          />
+          <ListItemSecondaryAction>
+            <IconButton aria-label="Delete">
+              <Icon  style={{ fontSize: 36 }}>
+                  delete
+              </Icon>
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      }
+    })
+
     return(
       <Paper>
         <Typography type="headline" component="h3">
           This will be the shopping list.
         </Typography>
         <List>
-            <ListItem button>
-              <ListItemAvatar>
-                <Avatar>
-                  <img alt="avatar" src={basket} />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Product name"
-                secondary="Product price"
-              />
-              <ListItemSecondaryAction>
-                <IconButton aria-label="Delete">
-                  <Icon  style={{ fontSize: 36 }}>
-                      delete
-                  </Icon>
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
+          {listDisplay}
           </List>
       </Paper>
     )

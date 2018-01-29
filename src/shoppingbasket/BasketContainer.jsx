@@ -53,7 +53,7 @@ class BasketContainer extends React.Component{
           <Grid container spacing={24}>
         <ProductList {...this.props} handleProducts={this.handleProducts}/>
         <Grid item xs={4}>
-          <Basket chosenProducts={this.state.basketContents}/>
+          <Basket chosenProducts={this.state.basketContents} allProducts={this.props.products}/>
         </Grid>
       </Grid>
     </React.Fragment>
