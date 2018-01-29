@@ -3,7 +3,9 @@ import './App.css';
 import Router from './Router';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
 import {ProductData} from './ProductData';
+import basket from './images/basket.jpg';
 
 
 class App extends Component {
@@ -11,10 +13,12 @@ class App extends Component {
     super(props);
     this.state = {
       currencyquotes: [],
-      countries: []
+      countries: [],
+      baseCurrency: ""
     }
     this.apiRequest = this.apiRequest.bind(this);
     this.countriesApiRequest = this.countriesApiRequest.bind(this);
+    this.changeCurrency = this.changeCurrency.bind(this);
   }
   apiRequest(){
     const url = "http://apilayer.net/api/live?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
@@ -52,6 +56,11 @@ class App extends Component {
     });
   }
 
+  changeCurrency(code){
+    this.setState({
+      baseCurrency: code
+    });
+  }
   componentDidMount(){
     this.apiRequest();
   }
@@ -59,12 +68,18 @@ class App extends Component {
     console.log(this.state.currencyquotes.quotes);
     console.log(this.state.countries);
     console.log(ProductData);
+    console.log(this.state.baseCurrency);
     return (
       <div className="App">
-        <Grid item s={12}>
-          <Paper>xs=12</Paper>
+        <Grid item xs={12}>
+          <Paper>
+            <img width="200" alt="basket" src={basket} />
+            <Typography type="display3" gutterBottom>
+              Global Basket
+            </Typography>
+          </Paper>
         </Grid>
-        <Router data={this.state} products={ProductData}/>
+        <Router data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
       </div>
     );
   }

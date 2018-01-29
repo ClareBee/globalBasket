@@ -12,8 +12,17 @@ class BasketContainer extends React.Component{
     this.state ={
       basketContents: [],
       currencyCode: "",
+      currencySwitch: false
     }
+    this.handleChange = this.handleChange.bind(this);
   }
+  handleChange(){
+    this.setState({
+      currencySwitch: true
+    })
+    this.props.changeCurrency("USGBP");
+  }
+
   render(){
     return(
       <React.Fragment>
@@ -21,7 +30,10 @@ class BasketContainer extends React.Component{
         <i className="material-icons">shopping_basket</i>
         <FormGroup>
         <FormControlLabel
-          control={ <Switch />
+          control={ <Switch
+          checked={this.state.currencySwitch}
+          onChange={this.handleChange}
+        />
         }
           label="USD"
         />
