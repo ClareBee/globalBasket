@@ -7,6 +7,7 @@ import Switch from 'material-ui/Switch';
 import Grid from 'material-ui/Grid';
 import Basket from './Basket';
 
+
 class BasketContainer extends React.Component{
   constructor(props){
     super(props);
@@ -17,6 +18,7 @@ class BasketContainer extends React.Component{
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleProducts = this.handleProducts.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
   handleChange(event, checked){
     this.setState({
@@ -32,6 +34,16 @@ class BasketContainer extends React.Component{
     this.setState({
       basketContents: arr
     })
+  }
+  deleteItem(index){
+    let items = this.state.basketContents;
+    if(items.includes(index)){
+      items.splice(items.indexOf(index), 1)
+    }
+    this.setState({
+      basketContents: items
+    })
+    console.log(this.state.basketContents)
   }
 
   render(){
@@ -51,9 +63,9 @@ class BasketContainer extends React.Component{
         <React.Fragment>
           <h1>Product list</h1>
           <Grid container spacing={24}>
-        <ProductList {...this.props} handleProducts={this.handleProducts}/>
+        <ProductList {...this.props} handleProducts={this.handleProducts} />
         <Grid item xs={4}>
-          <Basket chosenProducts={this.state.basketContents} allProducts={this.props.products}/>
+          <Basket chosenProducts={this.state.basketContents} allProducts={this.props.products} deleteItem={this.deleteItem}/>
         </Grid>
       </Grid>
     </React.Fragment>

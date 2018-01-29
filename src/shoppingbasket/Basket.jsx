@@ -17,6 +17,10 @@ import List, {
 class Basket extends React.Component{
   constructor(props){
     super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+  handleDelete(event, index){
+    this.props.deleteItem(index);
   }
   render(){
     console.log(this.props)
@@ -34,7 +38,8 @@ class Basket extends React.Component{
             primary={product.name}
             secondary={product.price}
           />
-          <ListItemSecondaryAction>
+          <ListItemSecondaryAction
+            onClick={(e) => this.handleDelete(e, index)} >
             <IconButton aria-label="Delete">
               <Icon  style={{ fontSize: 36 }}>
                   delete

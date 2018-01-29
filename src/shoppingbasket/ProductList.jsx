@@ -57,7 +57,7 @@ class ProductList extends React.Component{
     });
 
     return(
-  
+
           <Grid item xs={8}>
             <GridList cols={2} cellHeight={250}>
 
