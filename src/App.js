@@ -6,6 +6,7 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import {ProductData} from './ProductData';
 import basket from './images/basket.jpg';
+import LatestTimeDisplay from './shoppingbasket/LatestTimeDisplay';
 
 
 class App extends Component {
@@ -83,8 +84,9 @@ class App extends Component {
     console.log(this.state.countries);
     console.log(ProductData);
     console.log(this.state.baseCurrency);
-    console.log(this.state.baseCurrencyRate)
-
+    console.log(this.state.baseCurrencyRate);
+    console.log(this.state.currencyquotes.timestamp)
+    let time = this.state.currencyquotes.timestamp;
     return (
       <div className="App">
         <Grid item xs={12}>
@@ -93,6 +95,7 @@ class App extends Component {
             <Typography type="display3" gutterBottom>
               Global Basket
             </Typography>
+            <LatestTimeDisplay time={time}/>
           </Paper>
         </Grid>
         <Router data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
