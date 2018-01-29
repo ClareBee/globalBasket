@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       currencyquotes: [],
       countries: [],
-      baseCurrency: ""
+      baseCurrency: "",
+      baseCurrencyRate: null
     }
     this.apiRequest = this.apiRequest.bind(this);
     this.countriesApiRequest = this.countriesApiRequest.bind(this);
@@ -57,26 +58,33 @@ class App extends Component {
   }
 
   changeCurrency(code){
-    this.setState({
-      baseCurrency: code
+    let rates = this.state.currencyquotes.quotes;
+    Object.keys(rates).map(rate => {
+      if(code === rate){
+        this.setState({
+          baseCurrencyRate: rates[rate],
+          baseCurrency: rate
+        });
+      }
     });
-  }
+    if(code === "USD"){
+      this.setState({
+        baseCurrency: "USD",
+        baseCurrencyRate: null
+      })
+    }
+}
   componentDidMount(){
     this.apiRequest();
   }
+
   render() {
     let rates = this.state.currencyquotes.quotes;
     console.log(this.state.countries);
     console.log(ProductData);
     console.log(this.state.baseCurrency);
-    let baseRate = 0;
-    if(rates && this.state.baseCurrency){
-    baseRate = Object.keys(rates).map(rate => {
-      if(this.state.baseCurrency == rate){
-        console.log(rates[rate])
-      }
-    })
-  }
+    console.log(this.state.baseCurrencyRate)
+
     return (
       <div className="App">
         <Grid item xs={12}>

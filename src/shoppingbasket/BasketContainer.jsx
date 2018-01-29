@@ -4,7 +4,6 @@ import LatestTimeDisplay from './LatestTimeDisplay';
 import CheckoutButton from './CheckoutButton';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
-import Basket from './Basket';
 
 class BasketContainer extends React.Component{
   constructor(props){
@@ -16,17 +15,20 @@ class BasketContainer extends React.Component{
     }
     this.handleChange = this.handleChange.bind(this);
   }
-  handleChange(){
+  handleChange(event, checked){
     this.setState({
-      currencySwitch: true
+      currencySwitch: checked
     })
-    this.props.changeCurrency("USDGBP");
+    if(!this.state.currencySwitch){
+      this.props.changeCurrency("USDGBP");
+    } else {
+      this.props.changeCurrency("USD");
+    }
   }
 
   render(){
     return(
       <React.Fragment>
-        <h1>basket</h1>
         <i className="material-icons">shopping_basket</i>
         <FormGroup>
         <FormControlLabel
@@ -35,12 +37,11 @@ class BasketContainer extends React.Component{
           onChange={this.handleChange}
         />
         }
-          label="USD"
+          label="GBP"
         />
         </FormGroup>
         <LatestTimeDisplay {...this.props} />
         <ProductList {...this.props}/>
-        <Basket />
         <CheckoutButton />
 
       </React.Fragment>

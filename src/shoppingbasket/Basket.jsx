@@ -1,4 +1,6 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
 
 class Basket extends React.Component{
   constructor(props){
@@ -6,7 +8,11 @@ class Basket extends React.Component{
   }
   render(){
     return(
-      <h1>Basket</h1>
+      <Paper>
+        <Typography type="headline" component="h3">
+          This will be the shopping list.
+        </Typography>
+      </Paper>
     )
   }
 }

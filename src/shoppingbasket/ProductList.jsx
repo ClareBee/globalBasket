@@ -3,8 +3,8 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
-import Paper from 'material-ui/Paper';
-import Typography from 'material-ui/Typography';
+import Basket from './Basket';
+
 
 
 class ProductList extends React.Component{
@@ -21,7 +21,7 @@ class ProductList extends React.Component{
               <GridList cols={2} cellHeight={250}>
 
                 <GridListTile>
-                  <img alt="default image" src={this.props.products[0]['image']} />
+                  <img alt="default" src={this.props.products[0]['image']} />
                   <GridListTileBar
               title={<span>Product</span>}
               subtitle={<span>cost</span>}
@@ -58,11 +58,7 @@ class ProductList extends React.Component{
         </GridList>
       </Grid>
       <Grid item xs={4}>
-        <Paper>
-          <Typography type="headline" component="h3">
-            This will be the shopping list.
-          </Typography>
-        </Paper>
+        <Basket />
       </Grid>
     </Grid>
       </React.Fragment>
