@@ -11,6 +11,22 @@ import Product from './Product'
 class ProductList extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      selectedProducts: []
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event, index){
+    console.log(index)
+    let chosenProduct = index;
+    let chosenProducts = this.state.selectedProducts;
+    chosenProducts.push(chosenProduct);
+    this.props.handleProducts(chosenProducts);
+    this.setState({
+      selectedProducts: chosenProducts
+    })
+    console.log(chosenProducts)
   }
   render(){
     let products = this.props.products;
@@ -18,22 +34,27 @@ class ProductList extends React.Component{
 
     let display = products.map((product, index) => {
 
-      return <GridListTile>
-        <img src={product.image} />
-        <GridListTileBar
-          title={<span>{product.name}</span>}
-          subtitle={<span>{this.props.data.baseCurrency === "USDGBP" ? "£" : "$" }
+      return  <GridListTile key={index} value={index}>
+                <img src={product.image} />
+                <GridListTileBar
+                  data-txt={product}
+                  onClick={(e) => this.handleClick(e, index)}
+
+                  value={index}
+                  title={<span>{product.name}</span>}
+                  subtitle={<span>{this.props.data.baseCurrency === "USDGBP" ? "£" : "$" }
                   {this.props.data.baseCurrency === "USDGBP" ? (product.price * this.props.data.baseCurrencyRate).toFixed(2) : product.price.toFixed(2)}</span>}
-          actionIcon={
-            <IconButton>
-              <Icon color="primary" style={{ fontSize: 36 }}>
-                add_circle
-              </Icon>
-            </IconButton>
-          }
-        />
-      </GridListTile>
-    })
+                  actionIcon={
+                <IconButton  value={index} >
+                  <Icon  color="primary" style={{ fontSize: 36 }} value={index}>
+                    add_circle
+                  </Icon>
+                </IconButton>
+                }
+
+                />
+              </GridListTile>
+    });
 
     return(
       <React.Fragment>

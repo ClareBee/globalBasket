@@ -14,6 +14,7 @@ class BasketContainer extends React.Component{
       currencySwitch: false
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleProducts = this.handleProducts.bind(this);
   }
   handleChange(event, checked){
     this.setState({
@@ -24,6 +25,12 @@ class BasketContainer extends React.Component{
     } else {
       this.props.changeCurrency("USD");
     }
+  }
+  handleProducts(arr){
+    this.setState({
+      basketContents: arr
+    })
+    console.log(this.state.basketContents)
   }
 
   render(){
@@ -40,7 +47,7 @@ class BasketContainer extends React.Component{
             label="GBP"
           />
         </FormGroup>
-        <ProductList {...this.props}/>
+        <ProductList {...this.props} handleProducts={this.handleProducts}/>
         <CheckoutButton />
       </React.Fragment>
     )
