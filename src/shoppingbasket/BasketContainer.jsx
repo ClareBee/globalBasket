@@ -31,19 +31,17 @@ class BasketContainer extends React.Component{
       <React.Fragment>
         <i className="material-icons">shopping_basket</i>
         <FormGroup>
-        <FormControlLabel
-          control={ <Switch
-          checked={this.state.currencySwitch}
-          onChange={this.handleChange}
-        />
-        }
-          label="GBP"
-        />
+          <FormControlLabel
+            control={ <Switch
+            checked={this.state.currencySwitch}
+            onChange={this.handleChange}
+          />
+          }
+            label="GBP"
+          />
         </FormGroup>
-        <LatestTimeDisplay {...this.props} />
         <ProductList {...this.props}/>
         <CheckoutButton />
-
       </React.Fragment>
     )
   }

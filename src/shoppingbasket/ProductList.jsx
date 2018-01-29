@@ -4,6 +4,7 @@ import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
 import Basket from './Basket';
+import Product from './Product'
 
 
 
@@ -12,6 +13,24 @@ class ProductList extends React.Component{
     super(props);
   }
   render(){
+    let products = this.props.products;
+    let display = products.map((product, index) => {
+      return <GridListTile>
+        <img src={product.image} />
+        <GridListTileBar
+          title={<span>{product.name}</span>}
+          subtitle={<span>{product.price}</span>}
+          actionIcon={
+            <IconButton>
+              <Icon color="primary" style={{ fontSize: 36 }}>
+                add_circle
+              </Icon>
+            </IconButton>
+          }
+        />
+      </GridListTile>
+    })
+
     console.log(this.props)
     return(
       <React.Fragment>
@@ -20,41 +39,8 @@ class ProductList extends React.Component{
             <Grid item xs={8}>
               <GridList cols={2} cellHeight={250}>
 
-                <GridListTile>
-                  <img alt="default" src={this.props.products[0]['image']} />
-                  <GridListTileBar
-              title={<span>Product</span>}
-              subtitle={<span>cost</span>}
-              actionIcon={
-                <React.Fragment>
-                <IconButton>
-                  <Icon  style={{ fontSize: 36 }}>
-                      delete
-                  </Icon>
-                </IconButton>
-                <IconButton>
-                  <Icon color="primary" style={{ fontSize: 36 }}>
-                      add_circle
-                  </Icon>
-                </IconButton>
-              </React.Fragment>
-              }
-            />
-          </GridListTile>
-          <GridListTile>
-            <img src="https://image.freepik.com/free-icon/question-mark_318-52837.jpg" />
-            <GridListTileBar
-              title={<span>Product Name</span>}
-              subtitle={<span>cost</span>}
-              actionIcon={
-                <IconButton>
-                  <Icon color="primary" style={{ fontSize: 36 }}>
-                    add_circle
-                  </Icon>
-                </IconButton>
-              }
-            />
-          </GridListTile>
+                {display}
+
         </GridList>
       </Grid>
       <Grid item xs={4}>
