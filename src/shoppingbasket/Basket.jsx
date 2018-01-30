@@ -56,7 +56,7 @@ class Basket extends React.Component{
     return(
       <Paper>
         <Typography type="headline" component="h3">
-          This will be the shopping list.
+          You've chosen:
         </Typography>
         <List>
           {listDisplay}

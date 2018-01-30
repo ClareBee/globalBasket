@@ -8,8 +8,10 @@ class SelectedItems extends React.Component {
   render(){
     console.log(this.props.data.finalItems)
     console.log(this.props.products)
+    let totalPrice = 0;
     let finalList = this.props.products.map((product, index) => {
       if(this.props.data.finalItems.includes(index)){
+        totalPrice += product.price;
         return (
           <ListItem button>
             <ListItemText primary={product.name} />
@@ -28,7 +30,7 @@ class SelectedItems extends React.Component {
           </List>
           <Divider />
           <Typography type="headline" gutterBottom>
-            Total:
+            Total: {totalPrice.toFixed(2)}
           </Typography>
         </Paper>
       </React.Fragment>

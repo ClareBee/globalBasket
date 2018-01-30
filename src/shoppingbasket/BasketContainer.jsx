@@ -60,26 +60,31 @@ class BasketContainer extends React.Component{
     return(
       <React.Fragment>
         <i className="material-icons">shopping_basket</i>
-        <FormGroup>
-          <FormControlLabel
-            control={ <Switch
-            checked={this.state.currencySwitch}
-            onChange={this.handleChange}
-          />
-          }
-            label="GBP"
-          />
+          <FormGroup>
+            <FormControlLabel
+              control={ <Switch
+              checked={this.state.currencySwitch}
+              onChange={this.handleChange}
+            />
+            }
+              label="GBP"
+            />
         </FormGroup>
         <React.Fragment>
           <h1>Product list</h1>
-          <Grid container spacing={24}>
-        <ProductList {...this.props} handleProducts={this.handleProducts} />
-        <Grid item xs={4}>
-          <Basket currency={this.props.data.baseCurrency} chosenProducts={this.state.basketContents} allProducts={this.props.products} deleteItem={this.deleteItem}/>
+        <Grid container spacing={24}>
+            <ProductList {...this.props} handleProducts={this.handleProducts} />
+            <Grid item xs={4}>
+              <Basket currency={this.props.data.baseCurrency}
+                      chosenProducts={this.state.basketContents}
+                      allProducts={this.props.products}
+                      deleteItem={this.deleteItem}/>
+            </Grid>
         </Grid>
-      </Grid>
-    </React.Fragment>
-          <Link to="/checkout"><Button color="primary" onClick={this.updateList}>Checkout</Button></Link>
+      </React.Fragment>
+          <Link to="/checkout">
+            <Button color="primary" onClick={this.updateList}>Checkout</Button>
+          </Link>
       </React.Fragment>
     )
   }

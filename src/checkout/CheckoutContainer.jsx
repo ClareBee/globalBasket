@@ -48,11 +48,12 @@ class CheckoutContainer extends React.Component{
     let conversion = this.state.chosenCurrencyCode.substr(3);
     return(
       <React.Fragment>
-        <Link to="/basket"><i className="material-icons">arrow_back</i></Link>
-        <h1>checkout</h1>
+        <Link to="/basket"><i className="material-icons">arrow_back</i>  back to products</Link>
+        <h1>case expression:
+
+          break;heckout</h1>
         <h2>You chose {this.state.chosenCurrency}</h2>
         <h2>{conversion}</h2>
-        <h3>{this.state.chosenCurrencyRate}</h3>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
         <Grid container xs={12}>
           <Grid item xs={6}>
