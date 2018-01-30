@@ -1,14 +1,18 @@
+import eggs from './images/eggs.jpg';
+import milk from './images/milk.jpg';
+import beans from './images/beans.png';
+import peas from './images/peas.jpg';
 
 export const ProductData = [
   {
-    image: "https://thumbs.dreamstime.com/b/dozen-eggs-14059542.jpg",
+    image: eggs,
     type: "dairy",
     name: "eggs",
     quantity: "dozen",
     price: 2.10
   },
   {
-    image: "https://www.trade-romania.ro/data/frontImages/b2b/buying_images/1379567937_Milk-3.jpg",
+    image: milk,
     type: "dairy",
     name: "milk",
     quantity: "bottle",
@@ -16,7 +20,7 @@ export const ProductData = [
     currency: "USD"
   },
   {
-    image: "https://www.keytekshop.co.uk/wp-content/uploads/2015/05/Heinz-Beans-Decoy-Safe.jpg",
+    image: beans,
     type: "storecupboard",
     name: "beans",
     quantity: "can",
@@ -24,7 +28,7 @@ export const ProductData = [
     currency: "USD"
   },
   {
-    image: "http://peashellers.net/wp-content/uploads/2015/04/Frozen-peas.jpg",
+    image: peas,
     type: "frozen produce",
     name: "peas",
     quantity: "bag",

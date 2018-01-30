@@ -6,7 +6,13 @@ import Icon from 'material-ui/Icon';
 import Basket from './Basket';
 import Product from './Product'
 
-
+const styles = {
+  photo: {
+    height: "inherit",
+    padding:"5px",
+    margin: "5px"
+  }
+}
 
 class ProductList extends React.Component{
   constructor(props){
@@ -35,7 +41,7 @@ class ProductList extends React.Component{
     let display = products.map((product, index) => {
 
       return  <GridListTile key={index} value={index} style={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
-                <img src={product.image} />
+                <img style={styles.photo} src={product.image} />
                 <GridListTileBar
                   data-txt={product}
                   onClick={(e) => this.handleClick(e, index)}
