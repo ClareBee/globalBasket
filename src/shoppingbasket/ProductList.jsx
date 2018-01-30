@@ -47,9 +47,9 @@ class ProductList extends React.Component{
                   onClick={(e) => this.handleClick(e, index)}
 
                   value={index}
-                  title={<span>{product.name}</span>}
+                  title={<span>{product.name.toUpperCase()}</span>}
                   subtitle={<span>{this.props.data.baseCurrency === "USDGBP" ? "£" : "$" }
-                  {this.props.data.baseCurrency === "USDGBP" ? (product.price * this.props.data.baseCurrencyRate).toFixed(2) : product.price.toFixed(2)}</span>}
+                  {this.props.data.baseCurrency === "USDGBP" ? (product.price * this.props.data.baseCurrencyRate).toFixed(2) : product.price.toFixed(2)} / {product.quantity}</span>}
                   actionIcon={
                 <IconButton  value={index} >
                   <Icon  color="primary" style={{ fontSize: 36 }} value={index}>

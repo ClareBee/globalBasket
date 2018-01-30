@@ -52,6 +52,7 @@ class CheckoutContainer extends React.Component{
 
   render(){
     console.log(this.props.data);
+    console.log(this.props);
     let conversion = this.state.chosenCurrencyCode.substr(3);
     return(
       <React.Fragment>
@@ -62,10 +63,10 @@ class CheckoutContainer extends React.Component{
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
         <Grid container xs={12}>
           <Grid item xs={6}>
-            <SelectedItems {...this.props} />
+            <SelectedItems {...this.props} baseCurrency={this.props.data.baseCurrency} baseCurrencyRate={this.props.data.baseCurrencyRate}/>
           </Grid>
           <Grid item xs={6}>
-            <ConvertedItems {...this.props} chosenCurrency={this.state.chosenCurrency} chosenCurrencyRate={this.state.chosenCurrencyRate}/>
+            <ConvertedItems {...this.props} baseCurrency={this.props.data.baseCurrency} baseCurrencyRate={this.props.data.baseCurrencyRate} chosenCurrency={this.state.chosenCurrency} chosenCurrencyRate={this.state.chosenCurrencyRate}/>
           </Grid>
         </Grid>
       </React.Fragment>

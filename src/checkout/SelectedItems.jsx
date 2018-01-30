@@ -9,13 +9,16 @@ class SelectedItems extends React.Component {
     console.log(this.props.data.finalItems)
     console.log(this.props.products)
     let totalPrice = 0;
+    let price = 0;
     let finalList = this.props.products.map((product, index) => {
+      this.props.baseCurrency ? price = product.price * this.props.baseCurrencyRate.toFixed(2) : price = product.price;
       if(this.props.data.finalItems.includes(index)){
-        totalPrice += product.price;
+        totalPrice += price;
+
         return (
           <ListItem button>
             <ListItemText primary={product.name} />
-            <ListItemText primary={product.price.toFixed(2)} />
+            <ListItemText primary={this.props.baseCurrency === "USDGBP" ? (product.price * this.props.baseCurrencyRate.toFixed(2)).toFixed(2) : (product.price.toFixed(2))} />
           </ListItem>
         );
       }
@@ -30,7 +33,7 @@ class SelectedItems extends React.Component {
           </List>
           <Divider />
           <Typography type="headline" gutterBottom>
-            Total: {totalPrice.toFixed(2)}
+            Total: <span style={{float: "right"}}> {this.props.baseCurrency ? "£" : "$"}{totalPrice.toFixed(2)}</span>
           </Typography>
         </Paper>
       </React.Fragment>

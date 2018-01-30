@@ -9,13 +9,16 @@ class ConvertedItems extends React.Component {
   render(){
     console.log(this.props)
     let convertedTotal = 0;
+    let price = 1;
+
     let convertedList = this.props.products.map((product, index) => {
+      this.props.baseCurrency ? price = this.props.baseCurrencyRate : price
       if(this.props.data.finalItems.includes(index)){
-        convertedTotal += (product.price * this.props.chosenCurrencyRate)
+        convertedTotal += (product.price * this.props.chosenCurrencyRate * price)
         return (
           <ListItem button>
             <ListItemText primary={product.name} />
-            <ListItemText primary={<span>{(product.price * this.props.chosenCurrencyRate).toFixed(2)} - {this.props.chosenCurrency}</span>} />
+            <ListItemText primary={<span>{(product.price * this.props.chosenCurrencyRate * price).toFixed(2)} - {this.props.chosenCurrency}</span>} />
           </ListItem>
         );
       }
@@ -30,7 +33,7 @@ class ConvertedItems extends React.Component {
           </List>
           <Divider />
           <Typography type="headline" gutterBottom>
-            Total: {convertedTotal.toFixed(2)} {this.props.chosenCurrency}
+            Total: <span style={{float: "right"}}> {convertedTotal.toFixed(2)} {this.props.chosenCurrency}</span>
           </Typography>
         </Paper>
       </React.Fragment>

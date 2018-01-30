@@ -3,6 +3,7 @@ import './App.css';
 import Router from './Router';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
 import {ProductData} from './ProductData';
 import basket from './images/basket.jpg';
@@ -128,7 +129,7 @@ class App extends Component {
               </Grid>
             </Grid>
           </Paper>
-
+          <Divider style={{marginBottom: "20px"}}/>
         <Router finaliseList={this.handleBasketItems} data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
       </div>
     );
