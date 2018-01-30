@@ -5,10 +5,25 @@ import CheckoutButton from './CheckoutButton';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 import Basket from './Basket';
 import { Link }  from 'react-router-dom';
 import Button from 'material-ui/Button';
 
+const styles = {
+  formStyles: {
+    border: "1px solid grey",
+    borderRadius: "5px",
+    background: "lightgray",
+    padding: "5px",
+    marginBottom: "10px"
+  },
+  button: {
+    width: "150px",
+    height: "80px",
+    marginTop: "10px"
+  }
+}
 
 class BasketContainer extends React.Component{
   constructor(props){
@@ -59,20 +74,28 @@ class BasketContainer extends React.Component{
     console.log(this.props)
     return(
       <React.Fragment>
-        <i className="material-icons">shopping_basket</i>
-          <FormGroup>
+        <Grid container xs={12}>
+          <Grid item xs={2}>
+          <FormGroup style={styles.formStyles}>
+            <Typography type="title">Switch to £</Typography>
             <FormControlLabel
               control={ <Switch
               checked={this.state.currencySwitch}
               onChange={this.handleChange}
             />
             }
-              label="GBP"
+              label={<span>GBP</span>}
             />
         </FormGroup>
-        <React.Fragment>
-          <h1>Product list</h1>
-        <Grid container spacing={24}>
+      </Grid>
+      <Grid xs={10}>
+        <Link to="/checkout">
+          <Button style={styles.button} raised color="primary" onClick={this.updateList}>Checkout</Button>
+        </Link>
+      </Grid>
+      </Grid>
+          <Typography type="display1" gutterBottom style={{textDecoration: "underline"}}>Product list</Typography>
+        <Grid container spacing={24} >
             <ProductList {...this.props} handleProducts={this.handleProducts} />
             <Grid item xs={4}>
               <Basket currency={this.props.data.baseCurrency}
@@ -81,10 +104,6 @@ class BasketContainer extends React.Component{
                       deleteItem={this.deleteItem}/>
             </Grid>
         </Grid>
-      </React.Fragment>
-          <Link to="/checkout">
-            <Button color="primary" onClick={this.updateList}>Checkout</Button>
-          </Link>
       </React.Fragment>
     )
   }

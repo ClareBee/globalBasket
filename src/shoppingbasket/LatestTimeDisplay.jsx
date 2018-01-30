@@ -6,6 +6,7 @@ const timeStyles = {
   title: {
     display: "table",
     background: "white",
+    boxShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)",
     borderRadius: "5px",
     padding: "10px",
   }

@@ -34,7 +34,7 @@ class ProductList extends React.Component{
 
     let display = products.map((product, index) => {
 
-      return  <GridListTile key={index} value={index}>
+      return  <GridListTile key={index} value={index} style={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
                 <img src={product.image} />
                 <GridListTileBar
                   data-txt={product}
@@ -59,7 +59,7 @@ class ProductList extends React.Component{
     return(
 
           <Grid item xs={8}>
-            <GridList cols={2} cellHeight={250}>
+            <GridList cols={2} cellHeight={250} style={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
 
               {display}
 
