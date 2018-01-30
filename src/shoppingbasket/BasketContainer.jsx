@@ -56,6 +56,7 @@ class BasketContainer extends React.Component{
     this.props.handleBasketItems(chosen)
   }
   render(){
+    console.log(this.props)
     return(
       <React.Fragment>
         <i className="material-icons">shopping_basket</i>
@@ -74,7 +75,7 @@ class BasketContainer extends React.Component{
           <Grid container spacing={24}>
         <ProductList {...this.props} handleProducts={this.handleProducts} />
         <Grid item xs={4}>
-          <Basket chosenProducts={this.state.basketContents} allProducts={this.props.products} deleteItem={this.deleteItem}/>
+          <Basket currency={this.props.data.baseCurrency} chosenProducts={this.state.basketContents} allProducts={this.props.products} deleteItem={this.deleteItem}/>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -24,11 +24,13 @@ class Basket extends React.Component{
   }
   render(){
     console.log(this.props)
+    let symbol = "$";
     let totalProducts = this.props.allProducts;
     let productsChosen = this.props.chosenProducts;
     let listDisplay = totalProducts.map((product, index) => {
       if(productsChosen.includes(index)){
-        return <ListItem button>
+        return (
+          <ListItem button>
           <ListItemAvatar>
             <Avatar>
               <img alt="avatar" src={product.image} />
@@ -36,7 +38,7 @@ class Basket extends React.Component{
           </ListItemAvatar>
           <ListItemText
             primary={product.name}
-            secondary={product.price}
+            secondary={<span>{symbol}{product.price.toFixed(2)}</span>}
           />
           <ListItemSecondaryAction
             onClick={(e) => this.handleDelete(e, index)} >
@@ -47,6 +49,7 @@ class Basket extends React.Component{
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
+      )
       }
     })
 

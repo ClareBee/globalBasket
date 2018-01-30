@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Grid from 'material-ui/Grid';
 import CurrencySelector from './CurrencySelector';
 import SelectedItems from './SelectedItems';
+import ConvertedItems from './ConvertedItems';
 
 class CheckoutContainer extends React.Component{
   constructor(props){
@@ -52,7 +54,14 @@ class CheckoutContainer extends React.Component{
         <h2>{conversion}</h2>
         <h3>{this.state.chosenCurrencyRate}</h3>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
-        <SelectedItems {...this.props} />
+        <Grid container xs={12}>
+          <Grid item xs={6}>
+            <SelectedItems {...this.props} />
+          </Grid>
+          <Grid item xs={6}>
+            <ConvertedItems {...this.props} />
+          </Grid>
+        </Grid>
       </React.Fragment>
     )
   }

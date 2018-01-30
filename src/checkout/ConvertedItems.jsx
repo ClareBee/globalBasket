@@ -1,0 +1,37 @@
+import React from 'react';
+import Paper from 'material-ui/Paper';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Typography from 'material-ui/Typography';
+
+class ConvertedItems extends React.Component {
+
+  render(){
+    let convertedList = this.props.products.map((product, index) => {
+      if(this.props.data.finalItems.includes(index)){
+        return (
+          <ListItem button>
+            <ListItemText primary={product.name} />
+            <ListItemText primary={product.price.toFixed(2) * this.props.data.baseRate} />
+          </ListItem>
+        );
+      }
+    });
+    return(
+      <React.Fragment>
+        <Paper>
+          <h1>Converted Items</h1>
+          <Divider />
+          <List>
+            {convertedList}
+          </List>
+          <Divider />
+          <Typography type="headline" gutterBottom>
+            Total:
+          </Typography>
+        </Paper>
+      </React.Fragment>
+    )
+  }
+}
+export default ConvertedItems;
