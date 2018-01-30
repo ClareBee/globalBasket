@@ -4,6 +4,7 @@ import Router from './Router';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
+import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import {ProductData} from './ProductData';
 import basket from './images/basket.jpg';
@@ -126,6 +127,7 @@ class App extends Component {
               </Grid>
               <Grid item xs={4}>
                 <LatestTimeDisplay time={time}/>
+                <Button raised onClick={this.apiRequest}>Update</Button>
               </Grid>
             </Grid>
           </Paper>

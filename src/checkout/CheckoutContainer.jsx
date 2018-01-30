@@ -58,8 +58,6 @@ class CheckoutContainer extends React.Component{
       <React.Fragment>
         <Link to="/basket"><i className="material-icons">arrow_back</i>  back to products</Link>
         <Typography style={styles.title} type="display3">Checkout</Typography>
-        <h2>You chose {this.state.chosenCurrency}</h2>
-        <h2>{conversion}</h2>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
         <Grid container xs={12}>
           <Grid item xs={6}>

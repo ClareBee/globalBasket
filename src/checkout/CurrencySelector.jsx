@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 const styles = {
   selection: {
     fontSize: "20px",
@@ -27,9 +28,12 @@ class CurrencySelector extends React.Component {
 
     return(
       <React.Fragment>
-
-        <select style={styles.selection} onChange={this.handleSelection}>{list}</select>
-
+        <Grid container xs={12}>
+          <Grid item xs={6}>
+          <Typography style={{float: "right"}} type="headline">Choose a currency:</Typography>
+        </Grid>
+            <select style={styles.selection} onChange={this.handleSelection}>{list}</select>
+        </Grid>
       </React.Fragment>
     );
   }
