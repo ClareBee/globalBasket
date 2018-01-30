@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 import CurrencySelector from './CurrencySelector';
 import SelectedItems from './SelectedItems';
 import ConvertedItems from './ConvertedItems';
 
+const styles = {
+  title: {
+    textDecoration: "underline",
+    textDecorationColor: "#4742B8"
+  }
+}
 class CheckoutContainer extends React.Component{
   constructor(props){
     super(props);
@@ -49,7 +56,7 @@ class CheckoutContainer extends React.Component{
     return(
       <React.Fragment>
         <Link to="/basket"><i className="material-icons">arrow_back</i>  back to products</Link>
-        <h1>Checkout</h1>
+        <Typography style={styles.title} type="display3">Checkout</Typography>
         <h2>You chose {this.state.chosenCurrency}</h2>
         <h2>{conversion}</h2>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>

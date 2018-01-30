@@ -21,7 +21,9 @@ const styles = {
   button: {
     width: "150px",
     height: "80px",
-    marginTop: "10px"
+    marginTop: "10px",
+    marginRight: "50px",
+    float: "right"
   }
 }
 

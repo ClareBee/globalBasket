@@ -1,12 +1,16 @@
 import React from 'react';
 
+const styles = {
+  selection: {
+    fontSize: "20px",
+    borderRadius: "5px"
+  }
+}
 class CurrencySelector extends React.Component {
   constructor(props){
     super(props);
     this.handleSelection = this.handleSelection.bind(this);
   }
-
-
 
 
   handleSelection(event){
@@ -23,10 +27,11 @@ class CurrencySelector extends React.Component {
 
     return(
       <React.Fragment>
-      <select onChange={this.handleSelection}>{list}</select>
 
-    </React.Fragment>
-    )
+        <select style={styles.selection} onChange={this.handleSelection}>{list}</select>
+
+      </React.Fragment>
+    );
   }
 }
 
