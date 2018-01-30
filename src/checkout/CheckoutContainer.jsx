@@ -59,7 +59,7 @@ class CheckoutContainer extends React.Component{
             <SelectedItems {...this.props} />
           </Grid>
           <Grid item xs={6}>
-            <ConvertedItems {...this.props} />
+            <ConvertedItems {...this.props} chosenCurrency={this.state.chosenCurrency} chosenCurrencyRate={this.state.chosenCurrencyRate}/>
           </Grid>
         </Grid>
       </React.Fragment>

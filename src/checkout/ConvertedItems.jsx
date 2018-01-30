@@ -7,12 +7,15 @@ import Typography from 'material-ui/Typography';
 class ConvertedItems extends React.Component {
 
   render(){
+    console.log(this.props)
+    let convertedTotal = 0;
     let convertedList = this.props.products.map((product, index) => {
       if(this.props.data.finalItems.includes(index)){
+        convertedTotal += (product.price * this.props.chosenCurrencyRate)
         return (
           <ListItem button>
             <ListItemText primary={product.name} />
-            <ListItemText primary={product.price.toFixed(2) * this.props.data.baseRate} />
+            <ListItemText primary={<span>{(product.price * this.props.chosenCurrencyRate).toFixed(2)} - {this.props.chosenCurrency}</span>} />
           </ListItem>
         );
       }
@@ -27,7 +30,7 @@ class ConvertedItems extends React.Component {
           </List>
           <Divider />
           <Typography type="headline" gutterBottom>
-            Total:
+            Total: {convertedTotal.toFixed(2)} {this.props.chosenCurrency}
           </Typography>
         </Paper>
       </React.Fragment>
