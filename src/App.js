@@ -6,8 +6,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
-import {ProductData} from './ProductData';
-import basket from './images/basket.jpg';
+import { ProductData } from './ProductData';
 import currencies from './images/currencies.jpg';
 import LatestTimeDisplay from './shoppingbasket/LatestTimeDisplay';
 
@@ -41,6 +40,7 @@ class App extends Component {
     this.changeCurrency = this.changeCurrency.bind(this);
     this.handleBasketItems = this.handleBasketItems.bind(this);
   }
+
   apiRequest(){
     const url = "http://apilayer.net/api/live?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
     fetch(url)
@@ -59,6 +59,7 @@ class App extends Component {
     });
     this.countriesApiRequest();
   }
+
   countriesApiRequest(){
     const url = "http://apilayer.net/api/list?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
     fetch(url)
@@ -83,44 +84,41 @@ class App extends Component {
       if(code === rate){
         this.setState({
           baseCurrencyRate: rates[rate],
-          baseCurrency: rate
+          baseCurrency: rate,
+          finalItems: []
+        });
+      } else if(code.length === 3) {
+        this.setState({
+          baseCurrency: "USD",
+          baseCurrencyRate: null,
+          finalItems: []
         });
       }
     });
-    if(code === "USD"){
-      this.setState({
-        baseCurrency: "USD",
-        baseCurrencyRate: null
-      })
-    }
-}
+ }
+
   componentDidMount(){
     this.apiRequest();
   }
+
   handleBasketItems(arr){
     var finalChoice = this.state.finalItems;
     var finalData = finalChoice.concat(arr)
     this.setState({
       finalItems: finalData
-    })
-    console.log(this.state.finalItems)
+    });
   }
 
   render() {
-    let rates = this.state.currencyquotes.quotes;
-    console.log(this.state.countries);
-    console.log(ProductData);
-    console.log(this.state.baseCurrency);
-    console.log(this.state.baseCurrencyRate);
-    console.log(this.state.currencyquotes.timestamp)
     let time = this.state.currencyquotes.timestamp;
+
     return (
-      <div container xs={12} className="App">
+      <div  xs={12} className="App">
           <Paper style={{marginBottom: "30px"}}>
             <Grid container style={styles.currencyImage}>
               <Grid item xs={4}>
                 <Typography type="display3" gutterBottom style={styles.title}>
-                  Global Basket <i style={{fontSize: "1em"}} class="material-icons">shopping_basket</i>
+                  Global Basket <i style={{fontSize: "1em"}} className="material-icons">shopping_basket</i>
                 </Typography>
               </Grid>
               <Grid item xs={4}>
@@ -132,7 +130,10 @@ class App extends Component {
             </Grid>
           </Paper>
           <Divider style={{marginBottom: "20px"}}/>
-        <Router finaliseList={this.handleBasketItems} data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
+        <Router finaliseList={this.handleBasketItems}
+                data={this.state}
+                products={ProductData}
+                changeCurrency={this.changeCurrency}/>
       </div>
     );
   }

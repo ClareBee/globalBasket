@@ -3,8 +3,6 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Icon from 'material-ui/Icon';
-import Basket from './Basket';
-import Product from './Product'
 
 const styles = {
   photo: {
@@ -24,24 +22,24 @@ class ProductList extends React.Component{
   }
 
   handleClick(event, index){
-    console.log(index)
     let chosenProduct = index;
     let chosenProducts = this.state.selectedProducts;
+
     chosenProducts.push(chosenProduct);
     this.props.handleProducts(chosenProducts);
+
     this.setState({
       selectedProducts: chosenProducts
-    })
-    console.log(chosenProducts)
+    });
   }
+
   render(){
     let products = this.props.products;
-    console.log(this.props);
 
     let display = products.map((product, index) => {
 
       return  <GridListTile key={index} value={index} style={{boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)"}}>
-                <img style={styles.photo} src={product.image} />
+                <img alt="product" style={styles.photo} src={product.image} />
                 <GridListTileBar
                   data-txt={product}
                   onClick={(e) => this.handleClick(e, index)}

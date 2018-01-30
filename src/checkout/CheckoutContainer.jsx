@@ -21,6 +21,7 @@ class CheckoutContainer extends React.Component{
       chosenCurrencyRate: 0
     }
     this.handleChosenCurrency = this.handleChosenCurrency.bind(this);
+    this.handleLinkClick = this.handleLinkClick.bind(this);
   }
 
   handleChosenCurrency(code){
@@ -42,33 +43,39 @@ class CheckoutContainer extends React.Component{
         this.setState({
           chosenCurrency: countries[country]
         })
-        console.log(countries[country])
       }
-    })
+    });
   }
 }
+  handleLinkClick(){
+    console.log(this.props);
+    this.props.changeCurrency("USD");
+  }
 
 
 
   render(){
-    console.log(this.props.data);
-    console.log(this.props);
-    let conversion = this.state.chosenCurrencyCode.substr(3);
     return(
       <React.Fragment>
-        <Link to="/basket"><i className="material-icons">arrow_back</i>  back to products</Link>
+        <Link to="/basket"><span onClick={this.handleLinkClick}><i className="material-icons">arrow_back</i>  back to products</span></Link>
         <Typography style={styles.title} type="display3">Checkout</Typography>
         <CurrencySelector onSelect={this.handleChosenCurrency} data={this.props.data}/>
         <Grid container xs={12}>
           <Grid item xs={6}>
-            <SelectedItems {...this.props} baseCurrency={this.props.data.baseCurrency} baseCurrencyRate={this.props.data.baseCurrencyRate}/>
+            <SelectedItems {...this.props}
+              baseCurrency={this.props.data.baseCurrency}
+              baseCurrencyRate={this.props.data.baseCurrencyRate}/>
           </Grid>
           <Grid item xs={6}>
-            <ConvertedItems {...this.props} baseCurrency={this.props.data.baseCurrency} baseCurrencyRate={this.props.data.baseCurrencyRate} chosenCurrency={this.state.chosenCurrency} chosenCurrencyRate={this.state.chosenCurrencyRate}/>
+            <ConvertedItems {...this.props}
+              baseCurrency={this.props.data.baseCurrency}
+              baseCurrencyRate={this.props.data.baseCurrencyRate}
+              chosenCurrency={this.state.chosenCurrency}
+              chosenCurrencyRate={this.state.chosenCurrencyRate}/>
           </Grid>
         </Grid>
       </React.Fragment>
-    )
+    );
   }
 }
 

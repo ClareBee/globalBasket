@@ -1,7 +1,5 @@
 import React from 'react';
 import ProductList from './ProductList';
-import LatestTimeDisplay from './LatestTimeDisplay';
-import CheckoutButton from './CheckoutButton';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 import Grid from 'material-ui/Grid';
@@ -40,6 +38,7 @@ class BasketContainer extends React.Component{
     this.deleteItem = this.deleteItem.bind(this);
     this.updateList = this.updateList.bind(this);
   }
+
   handleChange(event, checked){
     this.setState({
       currencySwitch: checked
@@ -50,11 +49,13 @@ class BasketContainer extends React.Component{
       this.props.changeCurrency("USD");
     }
   }
+
   handleProducts(arr){
     this.setState({
       basketContents: arr
     })
   }
+
   deleteItem(index){
     let items = this.state.basketContents;
     if(items.includes(index)){
@@ -65,6 +66,7 @@ class BasketContainer extends React.Component{
     })
     console.log(this.state.basketContents)
   }
+
   updateList(){
     console.log('button clicked')
     console.log(this.props)
@@ -72,8 +74,8 @@ class BasketContainer extends React.Component{
     console.log(chosen)
     this.props.handleBasketItems(chosen)
   }
+
   render(){
-    console.log(this.props)
     return(
       <React.Fragment>
         <Grid container xs={12}>
@@ -90,7 +92,7 @@ class BasketContainer extends React.Component{
             />
         </FormGroup>
       </Grid>
-      <Grid xs={10}>
+      <Grid item xs={10}>
         <Link to="/checkout">
           <Button style={styles.button} raised color="primary" onClick={this.updateList}>Checkout</Button>
         </Link>
@@ -100,10 +102,12 @@ class BasketContainer extends React.Component{
         <Grid container spacing={24} >
             <ProductList {...this.props} handleProducts={this.handleProducts} />
             <Grid item xs={4}>
-              <Basket currency={this.props.data.baseCurrency}
+              <Basket
                       chosenProducts={this.state.basketContents}
                       allProducts={this.props.products}
-                      deleteItem={this.deleteItem}/>
+                      deleteItem={this.deleteItem}
+                      baseCurrency={this.props.data.baseCurrency}
+                      baseCurrencyRate={this.props.data.baseCurrencyRate}/>
             </Grid>
         </Grid>
       </React.Fragment>
