@@ -6,8 +6,23 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import {ProductData} from './ProductData';
 import basket from './images/basket.jpg';
+import currencies from './images/currencies.jpg';
 import LatestTimeDisplay from './shoppingbasket/LatestTimeDisplay';
 
+const styles = {
+    currencyImage: {
+        backgroundImage: `url(${currencies})`,
+        opacity: "0.8",
+        filter: "grayscale(100%)"
+    },
+    title: {
+      display: "table",
+      background: "white",
+      border: "10px solid black",
+      borderRadius: "8px",
+      padding: "10px"
+    }
+};
 
 class App extends Component {
   constructor(props){
@@ -98,16 +113,22 @@ class App extends Component {
     console.log(this.state.currencyquotes.timestamp)
     let time = this.state.currencyquotes.timestamp;
     return (
-      <div className="App">
-        <Grid item xs={12}>
-          <Paper>
-            <img width="200" alt="basket" src={basket} />
-            <Typography type="display3" gutterBottom>
-              Global Basket
-            </Typography>
-            <LatestTimeDisplay time={time}/>
+      <div container xs={12} className="App">
+          <Paper style={{marginBottom: "30px"}}>
+            <Grid container style={styles.currencyImage}>
+              <Grid item xs={4}>
+                <Typography type="display3" gutterBottom style={styles.title}>
+                  Global Basket <i style={{fontSize: "1em"}} class="material-icons">shopping_basket</i>
+                </Typography>
+              </Grid>
+              <Grid item xs={4}>
+              </Grid>
+              <Grid item xs={4}>
+                <LatestTimeDisplay time={time}/>
+              </Grid>
+            </Grid>
           </Paper>
-        </Grid>
+
         <Router finaliseList={this.handleBasketItems} data={this.state} products={ProductData} changeCurrency={this.changeCurrency}/>
       </div>
     );

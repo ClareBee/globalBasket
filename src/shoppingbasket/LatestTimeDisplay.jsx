@@ -1,6 +1,15 @@
 import React from 'react';
+import Typography from 'material-ui/Typography';
 import moment from 'moment';
 
+const timeStyles = {
+  title: {
+    display: "table",
+    background: "white",
+    borderRadius: "5px",
+    padding: "10px",
+  }
+}
 class LatestTimeDisplay extends React.Component{
 
   render(){
@@ -11,8 +20,7 @@ class LatestTimeDisplay extends React.Component{
     }
     return(
       <React.Fragment>
-        <h1>Time</h1>
-        <h2>Rates last updated: {formattedTime}</h2>
+        <Typography type="headline" gutterBottom style={timeStyles.title}>Rates last updated: {formattedTime}</Typography>
       </React.Fragment>
     )
   }
