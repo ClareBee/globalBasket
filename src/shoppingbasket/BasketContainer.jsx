@@ -6,7 +6,8 @@ import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Switch from 'material-ui/Switch';
 import Grid from 'material-ui/Grid';
 import Basket from './Basket';
-import { Link}  from 'react-router-dom';
+import { Link }  from 'react-router-dom';
+import Button from 'material-ui/Button';
 
 
 class BasketContainer extends React.Component{
@@ -77,7 +78,7 @@ class BasketContainer extends React.Component{
         </Grid>
       </Grid>
     </React.Fragment>
-          <Link to="/checkout"><button onClick={this.updateList}>Checkout</button></Link>
+          <Link to="/checkout"><Button color="primary" onClick={this.updateList}>Checkout</Button></Link>
       </React.Fragment>
     )
   }

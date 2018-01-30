@@ -1,10 +1,37 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Typography from 'material-ui/Typography';
 
 class SelectedItems extends React.Component {
   render(){
-    console.log(this.props)
+    console.log(this.props.data.finalItems)
+    console.log(this.props.products)
+    let finalList = this.props.products.map((product, index) => {
+      if(this.props.data.finalItems.includes(index)){
+        return (
+          <ListItem button>
+            <ListItemText primary={product.name} />
+            <ListItemText primary={product.price.toFixed(2)} />
+          </ListItem>
+        );
+      }
+    });
     return(
-      <h1>final choice</h1>
+      <React.Fragment>
+        <Paper>
+          <h1>Final choice</h1>
+          <Divider />
+          <List>
+            {finalList}
+          </List>
+          <Divider />
+          <Typography type="headline" gutterBottom>
+            Total:
+          </Typography>
+        </Paper>
+      </React.Fragment>
     )
   }
 }
