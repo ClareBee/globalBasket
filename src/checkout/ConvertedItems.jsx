@@ -8,25 +8,23 @@ class ConvertedItems extends React.Component {
 
   render(){
     let convertedTotal = 0;
-    let price = 1;
 
     let convertedList = this.props.products.map((product, index) => {
-      this.props.baseCurrency ? price = this.props.baseCurrencyRate : price
 
       if(this.props.data.finalItems.includes(index)){
-        convertedTotal += (product.price * this.props.chosenCurrencyRate * price)
+        convertedTotal += (product.price * this.props.chosenCurrencyRate)
 
         return (
           <ListItem button key={index}>
             <ListItemText primary={product.name} />
-            <ListItemText primary={<span>{(product.price * this.props.chosenCurrencyRate * price).toFixed(2)} - {this.props.chosenCurrency}</span>} />
+            <ListItemText primary={<span>{(product.price * this.props.chosenCurrencyRate).toFixed(2)} - {this.props.chosenCurrency}</span>} />
           </ListItem>
         );
       }
     });
     return(
       <React.Fragment>
-        <Paper>
+        <Paper style={{padding: "10px"}}>
           <Typography type="display3">Converted Items</Typography>
           <Divider />
           <List>

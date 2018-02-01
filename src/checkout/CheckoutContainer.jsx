@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider';
 import CurrencySelector from './CurrencySelector';
 import SelectedItems from './SelectedItems';
 import ConvertedItems from './ConvertedItems';

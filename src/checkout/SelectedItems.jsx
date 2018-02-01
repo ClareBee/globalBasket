@@ -27,8 +27,8 @@ class SelectedItems extends React.Component {
 
     return(
       <React.Fragment>
-        <Paper>
-          <Typography type="display3">Final choice</Typography>
+        <Paper style={{padding: "10px"}}>
+          <Typography type="display3">Final Choice</Typography>
           <Divider />
           <List>
             {finalList}

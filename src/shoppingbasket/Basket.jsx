@@ -63,7 +63,7 @@ class Basket extends React.Component{
     });
 
     return(
-      <Paper>
+      <Paper style={{padding: "10px"}}>
         <Typography type="headline" component="h3">
           You've chosen:
         </Typography>

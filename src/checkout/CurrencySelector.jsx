@@ -1,10 +1,12 @@
 import React from 'react';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import Divider from 'material-ui/Divider';
 const styles = {
   selection: {
-    fontSize: "20px",
-    borderRadius: "5px"
+    fontSize: "25px",
+    borderRadius: "5px",
+    marginBottom: "50px"
   }
 }
 class CurrencySelector extends React.Component {
@@ -30,8 +32,8 @@ class CurrencySelector extends React.Component {
       <React.Fragment>
         <Grid container xs={12}>
           <Grid item xs={6}>
-          <Typography style={{float: "right"}} type="headline">Choose a currency:</Typography>
-        </Grid>
+            <Typography style={{float: "right"}} type="headline">Choose a currency:</Typography>
+          </Grid>
             <select style={styles.selection} onChange={this.handleSelection}>{list}</select>
         </Grid>
       </React.Fragment>
