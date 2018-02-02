@@ -1,11 +1,13 @@
-#created with create-react-app
-
-![image of app](./basket.png)
-![image of app](./pounds.png)
-![image of app](./checkout.png)
 # Global Basket
 > Shopping Basket of goods in global currencies
 > Data courtesy of https://currencylayer.com/
+
+![image of app](./basket.png)
+***
+![image of app](./pounds.png)
+***
+![image of app](./checkout.png)
+
 
 ## Installing / Getting started
 ```
