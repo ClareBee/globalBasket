@@ -61,7 +61,7 @@ class App extends Component {
   }
 
   countriesApiRequest(){
-    const url = "http://apilayer.net/api/list?access_key=0833e883a2f3f36c40bc7b7a5ebef033"
+    const url = "http://apilayer.net/api/list?access_key=ACCESS_KEY_HERE"
     fetch(url)
     .then(function(response){
       if(response.ok){
